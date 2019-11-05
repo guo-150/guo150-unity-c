@@ -1,0 +1,26 @@
+<?php
+$link = mysqli_connect("localhost", "root", "root", "guozhengyang");
+$query = "SELECT *from stu_info where stu_id=4";
+if ($result = mysqli_query($link, $query)) {
+    $row = mysqli_fetch_row($result)
+?>
+  <form action= "register1.php"  method="post">
+名字<input type="text" name="h" value="<?php echo $row[1] ?>" >
+<br>
+年龄<input type="text" name="l" value="<?php echo $row[2] ?>" >
+<br>
+专业<select name="k">
+<option value = "unity">unity</option>
+<option value = "python">python</option>
+<option value = "php">php</option>
+<option value = "软件测试">软件</option>
+</select>
+<br>
+籍贯<input type="text" name="j" value="<?php echo $row[4] ?>" >
+<br>
+<input type = "submit" value="提交">
+</form>
+<?php
+    mysqli_free_result($result);
+}
+?> 
